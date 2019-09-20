@@ -48,15 +48,13 @@ class LinkedList:
       return
     prev_node = None
     curr_node = self.head # 3
-    print(f'val: {curr_node.next_node}')
     while curr_node.next_node:
       next_node = curr_node.next_node # 2 -> 1 : 1 -> None
       curr_node.next_node = prev_node # 3 -> None : 2 -> 3
       prev_node = curr_node # 3 -> None : 2 -> 3
-      # self.head = next_node # 2 -> 1
       curr_node = next_node # 2 -> 1 : 1 -> None
-    curr_node.next_node = prev_node
-    self.head = curr_node
+    curr_node.next_node = prev_node # 1 -> 2
+    self.head = curr_node # 1 -> 2
 
 if __name__ == '__main__':
   list = LinkedList()

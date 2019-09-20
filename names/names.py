@@ -38,12 +38,34 @@ duplicates = []
 #     unique[names_1[i]] = True
 #     unique[names_2[i]] = True
 
-unique = { i : True for i in names_1 }
+# Sprint Solution
+# unique = { i : True for i in names_1 }
 
-for i in range(len(names_2)):
-    if names_2[i] in unique.keys():
-        duplicates.append(names_2[i])
+# for i in range(len(names_2)):
+#     if names_2[i] in unique.keys():
+#         duplicates.append(names_2[i])
 
+# Stretch Solution
+# In place sort to save memory
+from bisect import bisect_left
+
+def binary_search(list, item, low=0, high=None):
+    high = high if high is not None else len(list)
+    pos = bisect_left(list, item, low, high)
+    return (pos if pos != high and list[pos] == item else -1)
+
+names_2.sort()
+
+for name in names_1:
+    name_2 = names_2[binary_search(names_2, name)]
+    if name_2 == name:
+        duplicates.append(name_2)
+
+
+# Alternative solution
+# set_1 = set(names_1)
+# set_2 = set(names_2)
+# duplicates = [i for i in set_1.intersection(set_2)]
 
 
 end_time = time.time()
