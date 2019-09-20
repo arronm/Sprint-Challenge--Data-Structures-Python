@@ -12,31 +12,38 @@ f.close()
 
 # 64 duplicates
 duplicates = []
-for name_1 in names_1:
-    for name_2 in names_2:
-        if name_1 == name_2:
-            duplicates.append(name_1)
+# for name_1 in names_1:
+#     for name_2 in names_2:
+#         if name_1 == name_2:
+#             duplicates.append(name_1)
 
 # Truly 124 duplicates total
-
 # create dictionary
-unique = {}
+# unique = {}
 
 # loop over recording unique names
-for i in range(max(len(names_1), len(names_2))):
-    if names_1[i] == names_2[i]:
-        unique[names_1[i]] = True
-        duplicates.append(names_1[i])
+# for i in range(max(len(names_1), len(names_2))):
+#     if names_1[i] == names_2[i]:
+#         unique_1[names_1[i]] = True
+#         unique_2[names_2[i]] = True
+#         duplicates.append(names_1[i])
 
-    # check for duplicate, add to list
-    if names_1[i] in unique.keys():
-        duplicates.append(names_1[i])
+#     # check for duplicate, add to list
+#     if names_1[i] in unique.keys():
+#         duplicates.append(names_1[i])
 
+#     if names_2[i] in unique.keys():
+#         duplicates.append(names_2[i])
+    
+#     unique[names_1[i]] = True
+#     unique[names_2[i]] = True
+
+unique = { i : True for i in names_1 }
+
+for i in range(len(names_2)):
     if names_2[i] in unique.keys():
         duplicates.append(names_2[i])
-    
-    unique[names_1[i]] = True
-    unique[names_2[i]] = True
+
 
 
 end_time = time.time()
